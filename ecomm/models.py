@@ -13,7 +13,7 @@ class Category(MPTTModel):
 
     class MPTTMeta:
         order_insertion_by = ['name']
-        # level_attr = 'mptt_level'
+
 
     class Meta:
         verbose_name = 'Категории'
