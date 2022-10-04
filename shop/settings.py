@@ -31,7 +31,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    # 'django.contrib.sites',
     'django.contrib.staticfiles',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
     'ecomm',
     'cart',
     'mptt',
@@ -50,6 +52,7 @@ INSTALLED_APPS = [
     'users',
     'debug_toolbar',
     'send_mail',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -126,9 +129,55 @@ AUTHENTICATION_BACKENDS = [
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 
 ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL= True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_SIGNUP_FORM_CLASS = 'users.forms.SignupForm'
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION =True
 
-ACCOUNT_EMAIL_VERIFICATION = 'none'
 
+
+SITE_ID = 1
+
+# 736317891835-2v0setcmgotv9r9d6msuvcv87670eorq.apps.googleusercontent.com
+#
+# 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
+
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'METHOD': 'oauth2',
+        'SDK_URL': '//connect.facebook.net/{locale}/sdk.js',
+        'SCOPE': ['email', 'public_profile'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'INIT_PARAMS': {'cookie': True},
+        'FIELDS': [
+            'id',
+            'first_name',
+            'last_name',
+            'middle_name',
+            'name',
+            'name_format',
+            'picture',
+            'short_name'
+        ],
+        'EXCHANGE_TOKEN': True,
+        # 'LOCALE_FUNC': 'path.to.callable',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v13.0',
+    }
+}
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -151,7 +200,6 @@ STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = []
 
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -166,17 +214,17 @@ LOGIN_REDIRECT_URL = '/'
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-LOGIN_URL = 'login/'
+LOGIN_URL = '/'
 
 GOOGLE_MAPS_API_KEY = os.environ.get('GOOGLE_MAPS_API_KEY')
 
 INTERNAL_IPS = [
     "127.0.0.1",
-    ]
+]
 
 # Email
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'blinov.maxim@gmail.com'
-EMAIL_HOST_PASSWORD =os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True

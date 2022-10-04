@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^cart/', include('cart.urls')),
     path('', include('ecomm.urls', namespace='ecomm')),
-    path('account/', include('allauth.urls')),
+    path('accounts/', include('allauth.urls')),
     path('account/', include('users.urls')),
     path('', include('send_mail.urls')),
     path('__debug__/', include('debug_toolbar.urls')),

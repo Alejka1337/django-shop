@@ -88,7 +88,7 @@ img.img-article-left.thumb {
 .parent-ul {
 	height: fit-content;
 	padding: 10px;
-	background: red;
+	/*background: red;*/
 }
 
 .parent-ul:hover .children-ul {
