@@ -7,12 +7,16 @@
 {% block content %}
     <div class="container-lg">
         <div class="row">
+          {% if status %}
+            <h1 class="text-center">Упс... При оформлении заказа проиозшла ошибка</h1>
+            <p class="text-center">Проверьте баланс на карте или обратитесь за помощью к подержке вашего банка</p>
+
+          {% else %}
             <h1 class="text-center">Ваш заказ принят</h1>
-        </div>
-        <div class="row">
             <p class="text-center">В ближайшее время мы сформируем и отправим вам заказ</p>
             <br />
             <p class="text-center">Благодарим за покупку в нашем интернет-магазине</p>
+          {% endif %}
         </div>
     </div>
 {% endblock %}

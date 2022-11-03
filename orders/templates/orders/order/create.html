@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+  <div class="container-lg">
     <h1>Checkout</h1>
     <div class="order-info">
         <h3>Your order</h3>
@@ -19,26 +20,14 @@
         <p>Total: ${{ cart.get_total_price }}</p>
     </div>
     <form action="." method="post" class="order-form">
-        {{ form.as_p }}
-        <p><input type="submit" value="Place order"></p>
+      <table>
+        {{ form.as_table }}
+        </table>
+        <p><input class="btn btn-primary" type="submit" value="Place order"></p>
         {% csrf_token %}
     </form>
 
-    <form
-        method="POST"
-        action="https://www.liqpay.ua/api/3/checkout"
-        accept-charset="utf-8">
-        <input
-            type="hidden"
-            name="data"
-            value="{{ data }}"/>
-        <input
-            type="hidden"
-            name="signature"
-            value="{{ signature }}"/>
-        <input
-            type="image"
-            src="//static.liqpay.ua/buttons/p1ru.radius.png"/>
-    </form>
+
+  </div>
 
 {% endblock %}
