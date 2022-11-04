@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'imagekit',
     'orders',
     'comments',
+    # 'ajax_select',
 ]
 
 MIDDLEWARE = [

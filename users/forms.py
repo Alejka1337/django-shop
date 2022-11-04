@@ -18,6 +18,7 @@ class ProfileForm(forms.ModelForm):
         )
         widgets = {
             "birthday": forms.DateInput(attrs={'type': 'date'}),
+            "telephone": forms.NumberInput(attrs={'type': 'tel'})
         }
 
 

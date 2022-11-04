@@ -3,7 +3,6 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
 from cart.form import CartAddProductForm
 from shop.settings import GOOGLE_MAPS_API_KEY
-from django.views.generic import DetailView, ListView
 from comments.form import CommentForm
 
 
@@ -88,20 +87,3 @@ def about(request):
 
 
 
-# class ParentCategoryDetailView(DetailView):
-#     model = Category
-#     template_name = 'ecomm/parent.html'
-#     context_object_name = 'parent_category'
-#
-#
-# class ChildrenCategoryDetailView(DetailView):
-#     model = Category
-#     template_name = 'ecomm/children.html'
-#     context_object_name = 'children_category'
-#     paginate_by = 5
-#     slug_field = 'slug'
-#
-#     def get_context_data(self, *, object_list=None, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['products'] = self.object.product_set.all()
-#         return context
