@@ -11,8 +11,15 @@ from users.models import UserProfile
 @login_required
 def profile(request):
     user = request.user
-
-    return render(request, 'profile.html', {'user': user,'title': 'My Profile'})
+    if user.is_superuser:
+        order_list = Order.objects.all()
+    else:
+        current_user = UserProfile.objects.get(user__pk=user.pk)
+        order_list = Order.objects.filter(phone_number=current_user.telephone)
+    return render(request, 'profile.html', {'user': user,
+                                            'title': 'My Profile',
+                                            'order_list': order_list,
+                                            })
 
 
 @login_required

@@ -40,7 +40,7 @@ class OrderCreate(View):
                     price=item["price"],
                     quantity=item["quantity"],
                 )
-            print(data)
+
             if data['payment_method'] != "2":
                 return redirect('/orders/thank')
         return redirect('/orders/created')

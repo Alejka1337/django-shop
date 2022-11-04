@@ -49,6 +49,35 @@
                     </div>
                 </div>
             </div>
-        </div>
+
+       <div class="mt-5">
+          <br/>
+          <h3>{% trans 'Your orders' %}</h3>
+       </div>
+      <table class="table table-bordered" id="orders_table" style="text-align: center" >
+        <thead class="table-success">
+          <tr>
+            <th>{% trans "ID" %}</th>
+            <th>{% trans "First Name" %}</th>
+            <th>{% trans "Last Name" %}</th>
+            <th>{% trans "Phone" %}</th>
+            <th>{% trans "City" %}</th>
+            <th>{% trans "Post office" %}</th>
+            <th>{% trans "Status" %}</th>
+          </tr>
+        </thead>
+        {% for order in order_list %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.first_name }}</td>
+                <td>{{ order.last_name }}</td>
+                <td>{{ order.phone_number }}</td>
+                <td>{{ order.delivery_city }}</td>
+                <td>{{ order.post_office_number }}</td>
+                <td>{{ order.paid }}</td>
+            </tr>
+        {% endfor %}
+      </table>
+      </div>
 </div>
 {% endblock %}

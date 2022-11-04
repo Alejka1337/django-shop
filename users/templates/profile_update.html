@@ -1,7 +1,7 @@
 {% extends 'ecomm/base.html' %}
 {% load i18n %}
-{load account %}
-{%load static%}
+{% load account %}
+{% load static%}
 
 {% block title %}
     <title>{{ title }}</title>
@@ -28,9 +28,9 @@
             {% if field.help_text %}
              <p class="help">{{ field.help_text|safe }}</p>
             {% endif %}
-            {% include 'phones.html' %}
             </div>
           {% endfor %}
+          {% include 'phones.html' %}
             <div class="button-wrapper submit">
                <input type="submit" class="btn btn-primary" value="Update" />
             </div>

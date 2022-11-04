@@ -19,14 +19,15 @@ def mail_send(request):
     message = template.render(context)
 
     email = EmailMultiAlternatives(
-        "Обращение от клиента", message,
+        "Client's message", message,
         "Hello" + "- Lucky Man !",
-        ["blinov.maxim@gmail.com"]
+        ["test.shop.1337@gmail.com"]
 
     )
 
     email.content_subtype = 'html'
     email.send()
-    messages.success(request, 'Message sent seccessfully !')
+    success_send = 50
+    messages.add_message(request, success_send, 'Message sent succesfully !!')
 
     return HttpResponseRedirect('feedback/')
